@@ -1,0 +1,185 @@
+
+:root {
+    --brand-900: #1d4ed8;
+    --brand-800: #1e3a8a;
+    --brand-700: #2563eb;
+    --brand-600: #3b82f6;
+    --gray-900: #0b0d12;
+    --gray-800: #151922;
+    --gray-700: #2a3240;
+    --gray-600: #536072;
+    --gray-500: #7c8899;
+    --gray-400: #b3bcc9;
+    --bg: #f0f4f8;
+    --text: #111827;
+  
+    --radius: 14px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --fast: 160ms ease;
+    --slow: 320ms ease;
+    --container: 1180px;
+  }
+  
+  /* 深色模式 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c111b;
+      --text: #e5e7eb;
+      --gray-900: #e5e7eb;
+      --gray-800: #cfd6e3;
+      --gray-700: #b7c0d2;
+      --gray-600: #9aa6bd;
+      --gray-500: #7f8aa1;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+  .about-page {
+    background: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+  }
+  .about-page *, .about-page *::before, .about-page *::after { box-sizing: border-box; }
+  
+  /* Header */
+  .about-page header {
+    text-align: center;
+    margin: clamp(20px, 4vw, 40px) 0;
+  }
+  .about-page header h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(90deg, var(--brand-900), var(--brand-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* 布局 */
+  .about-page .container {
+    display: flex;
+    gap: clamp(20px, 4vw, 40px);
+    max-width: var(--container);
+    margin: clamp(32px, 6vw, 72px) auto;
+    padding: 0 clamp(16px, 3vw, 24px);
+    flex-wrap: wrap;
+  }
+  
+  /* Sidebar */
+  .about-page .sidebar {
+    flex: 0 0 clamp(200px, 24%, 260px);
+    position: sticky;
+    top: 84px;
+    height: fit-content;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
+    border: 1px solid var(--gray-400);
+  }
+  .about-page .sidebar h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--brand-900);
+    margin: 4px 0 12px;
+  }
+  .about-page .sidebar a {
+    display: block;
+    padding: 10px 12px;
+    font-weight: 600;
+    color: var(--gray-700);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-400);
+    background: #fff;
+    transition: transform var(--fast), box-shadow var(--fast), background var(--fast);
+    margin-bottom: 8px;
+  }
+  .about-page .sidebar a:hover {
+    background: var(--brand-600);
+    color: #fff;
+    transform: translateX(2px);
+    box-shadow: var(--shadow);
+  }
+  
+  /* Content */
+  .about-page .content {
+    flex: 1 1 520px;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: clamp(22px, 3.2vw, 32px);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
+  }
+  .about-page .content h2 {
+    font-size: clamp(22px, 2.2vw, 28px);
+    font-weight: 800;
+    color: var(--brand-900);
+    margin: 0 0 14px;
+  }
+  .about-page .content p,
+  .about-page .content li {
+    color: var(--gray-700);
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .about-page .content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform var(--fast);
+  }
+  .about-page .content img:hover { transform: scale(1.02); }
+  
+  /* 固定右下角 Home 按钮 + 悬浮提示 */
+  .about-page .return-home {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--brand-800);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: background var(--fast), transform var(--fast);
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .about-page .return-home svg {
+    width: 26px;
+    height: 26px;
+  }
+  .about-page .return-home:hover {
+    background: var(--brand-700);
+    transform: scale(1.1);
+  }
+  
+  /* tooltip 样式 */
+  .about-page .return-home::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 65px;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--gray-800);
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--fast), transform var(--fast);
+  }
+  .about-page .return-home:hover::after {
+    opacity: 1;
+    transform: translateX(50%) translateY(-4px);
+  }
+  
