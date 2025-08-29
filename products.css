@@ -181,13 +181,13 @@
   z-index: 9999;
 }
 
-
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
   border-radius: 12px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
+
 .lightbox-close {
   position: absolute;
   top: 20px;
@@ -203,9 +203,60 @@
   color: var(--accent);
 }
 
-
 .lightbox.active {
   display: flex;
+}
+
+/* 固定右下角返回 Home 按钮 + 悬浮提示 */
+.return-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--brand-800);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: background var(--fast), transform var(--fast);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.return-home svg {
+  width: 26px;
+  height: 26px;
+}
+
+.return-home:hover {
+  background: var(--brand-700);
+  transform: scale(1.1);
+}
+
+/* tooltip 样式 */
+.return-home::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 65px;
+  right: 50%;
+  transform: translateX(50%);
+  background: var(--gray-800);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--fast), transform var(--fast);
+}
+
+.return-home:hover::after {
+  opacity: 1;
+  transform: translateX(50%) translateY(-4px);
 }
 
 /* 响应式 */
@@ -229,49 +280,47 @@
       height: auto;
   }
   /* ===== Lightbox ===== */
-.lightbox{
-  position: fixed;
-  inset: 0;
-  display: none;                /* 初始隐藏 */
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: rgba(0,0,0,.75);
-  z-index: 1000;
-}
-.lightbox.active{ display: flex; }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;                /* 初始隐藏 */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, .75);
+    z-index: 1000;
+  }
+  .lightbox.active { display: flex; }
 
-.lightbox img{
-  max-width: min(90vw, 1200px);
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0,0,0,.4);
-  background: #fff;            /* 防止透明图看不清 */
-}
+  .lightbox img {
+    max-width: min(90vw, 1200px);
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .4);
+    background: #fff;            /* 防止透明图看不清 */
+  }
 
-.lightbox-close{
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  line-height: 36px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.35);
-  background: rgba(0,0,0,.35);
-  color: #fff;
-  font-size: 28px;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.lightbox-close:hover{
-  background: rgba(0,0,0,.5);
-  transform: translateY(-1px);
-}
-
-/* 打开弹层时可选：禁止背景滚动（配合 JS 设置 body 的 overflow） */
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    background: rgba(0, 0, 0, .35);
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-close:hover {
+    background: rgba(0, 0, 0, .5);
+    transform: translateY(-1px);
+  }
 }

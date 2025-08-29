@@ -6,16 +6,115 @@
   <title>Contact Us - Mesh Teck (Jiaxing) Co., Ltd.</title>
   <meta name="keywords" content="Contact, Mesh Teck (Jiaxing) Co., Ltd." />
   <meta name="description" content="Get in touch with Mesh Teck (Jiaxing) Co., Ltd." />
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/jpeg" href="WechatIMG4111.jpg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .contact-card {
+      flex: 1 1 300px;
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .contact-card h3 {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2em;
+      color: #333;
+    }
+    .contact-card svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+    .contact-card p {
+      margin: 6px 0;
+      font-size: 1em;
+      color: #555;
+      line-height: 1.5;
+    }
+    .contact-card a.btn {
+      margin-top: 10px;
+      padding: 10px 18px;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+      width: fit-content;
+    }
+    .contact-card a.btn:hover {
+      background-color: #0056b3;
+    }
+    .return-home {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #123b8a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(11, 30, 63, 0.08);
+      transition: background 160ms ease, transform 160ms ease;
+      z-index: 1000;
+      text-decoration: none;
+    }
+    .return-home svg {
+      width: 26px;
+      height: 26px;
+    }
+    .return-home:hover {
+      background: #0b1e3f;
+      transform: scale(1.1);
+    }
+    .return-home::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 65px;
+      right: 50%;
+      transform: translateX(50%);
+      background: #000;
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .return-home:hover::after {
+      opacity: 1;
+      transform: translateX(50%) translateY(-4px);
+    }
+  </style>
 </head>
 <body class="contact">
   <!-- Header -->
   <header class="g_header">
     <div class="top">
-      <div class="g_cw">
-        <p><a href="contact.html">Contact Us</a></p>
-      </div>
+      <div class="g_cw"><p><a href="contact.html">Contact Us</a></p></div>
     </div>
     <div class="center">
       <div class="g_cw header-brand">
@@ -24,19 +123,6 @@
           <span class="p1">Mesh Teck (Jiaxing) Co., Ltd.</span>
           <span class="p2">Specializing in mesh fences, barriers, guardrails, and automated protective nets</span>
         </p>
-      </div>
-    </div>
-    <div class="header-nav">
-      <div class="g_cw navbar">
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label for="menu-toggle" class="menu-button" aria-label="Open menu">Menu</label>
-        <ul class="nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="partners.html">Partners</a></li>
-          <li><a href="contact.html" class="on" aria-current="page">Contact Us</a></li>
-        </ul>
       </div>
     </div>
   </header>
@@ -50,76 +136,82 @@
     </div>
   </section>
 
-  <!-- Contact Info -->
+  <!-- Contact Cards -->
   <main class="g_cw contact-main">
     <section class="contact-info">
       <h2>Contact Information</h2>
-      <p><strong>Company:</strong> Mesh Teck (Jiaxing) Co., Ltd.</p>
-      <p><strong>Address:</strong> No. 111 Yaojia East Road, Haiyan Economic Development Zone, Jiaxing, Zhejiang, China</p>
-      <p><strong>Hotline:</strong> +86 573 86889880 </p>
-      <p><strong>Email1:</strong> liujunle@meshteck.cn</p>
-      <p><strong>Email2:</strong> gaoye05@gmail.com</p>
-      <p><strong>Website:</strong> www.yourmeshteck.com</p>
-    </section>
-
-    <!-- Quick Message via Email -->
-    <section id="form">
-        <h2>Quick Message</h2>
-        <p>To send us a message, please email directly:</p>
-        <p>
-            <a href="mailto:gaoye05@gmail.com?subject=Message%20from%20Contact%20Page" class="btn">
-                Send Email
-            </a>
-        </p>
-        <p>Click the button above to open your email client and send us a message directly.</p>
+      <div class="contact-cards">
+        <!-- Company -->
+        <div class="contact-card">
+          <h3>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#4caf50"/></svg>
+            Company
+          </h3>
+          <p>Mesh Teck (Jiaxing) Co., Ltd.</p>
+        </div>
+        <!-- Address -->
+        <div class="contact-card">
+          <h3>
+            <svg viewBox="0 0 24 24"><path fill="#f44336" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+            Address
+          </h3>
+          <p>No. 111 Yaojia East Road, Haiyan Economic Development Zone, Jiaxing, Zhejiang, China</p>
+        </div>
+        <!-- Hotline -->
+        <div class="contact-card">
+          <h3>
+            <svg viewBox="0 0 24 24"><path fill="#2196f3" d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.72 11.72 0 003.69.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.69 1 1 0 01-.21 1.11l-2.26 2.26z"/></svg>
+            Hotline
+          </h3>
+          <p>+86 573 86889880</p>
+        </div>
+        <!-- Email -->
+        <div class="contact-card">
+          <h3>
+            <svg viewBox="0 0 24 24"><path fill="#ff9800" d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+            Email
+          </h3>
+          <p>liujunle@meshteck.cn</p>
+          <p>gaoye05@gmail.com</p>
+        </div>
+        <!-- Website -->
+        <div class="contact-card">
+          <h3>
+            <svg viewBox="0 0 24 24"><path fill="#9c27b0" d="M12 4a8 8 0 100 16 8 8 0 000-16zm1 11h-2v-2H9v-2h2V9h2v2h2v2h-2v2z"/></svg>
+            Website
+          </h3>
+          <p>www.yourmeshteck.com</p>
+        </div>
+        <!-- Quick Message -->
+        <div class="contact-card" style="flex-basis:100%;">
+          <h3>
+            <svg viewBox="0 0 24 24"><path fill="#00bcd4" d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-2 4l-6 4-6-4V6l6 4 6-4v2z"/></svg>
+            Quick Message
+          </h3>
+          <p>To send us a message, please email directly:</p>
+          <a href="mailto:gaoye05@gmail.com?subject=Message%20from%20Contact%20Page" class="btn">
+            Send Email
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="g_footer">
     <div class="g_cw">
-      <div class="top clearfix">
-        <ul class="nav left clearfix">
-          <li>
-            <div class="box lt">
-              <p class="h1">About Us</p><br/>
-              <p class="p1"><a href="about.html#profile">Company Profile</a></p>
-            </div>
-          </li>
-          <li>
-            <div class="box lt">
-              <p class="h1">Products</p><br/>
-              <p class="p1"><a href="products.html#perimeter">Perimeter Protection System</a></p>
-              <p class="p1"><a href="products.html#automation">Automation Protection System</a></p>
-              <p class="p1"><a href="products.html#access">Access Control System</a></p>
-            </div>
-          </li>
-          <li>
-            <div class="box lt">
-              <p class="h1">Partners</p><br/>
-              <p class="p1"><a href="partners.html">Selected partners</a></p>
-            </div>
-          </li>
-          <li>
-            <div class="box">
-              <p class="h1">Contact Us</p><br/>
-              <p class="p1">Address: No. 111 Yaojia East Road, Haiyan Economic Development Zone, Jiaxing, Zhejiang, China</p>
-              <p class="p1">Service Hotline: +86 573 86889880</p>
-              <p class="p1">Email1: gaoye05@gmail.com</p>
-              <p class="p1">Email2: minying@meshteck.cn</p>
-              <p class="p1">Website: www.meshtesk.com</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="bottom">
-        © <span id="year"></span> Mesh Teck (Jiaxing) Co., Ltd. All rights reserved.
-      </div>
+      <p>Address: No. 111 Yaojia East Road, Haiyan Economic Development Zone, Jiaxing, Zhejiang, China</p>
+      <p>Service Hotline: +86 573 86889880 &nbsp;|&nbsp; Email: <a href="mailto:gaoye05@gmail.com">gaoye05@gmail.com</a> &nbsp;|&nbsp; Website: <a href="https://www.yourmeshteck.com">www.yourmeshteck.com</a></p>
+      <p>© <span id="year"></span> Mesh Teck (Jiaxing) Co., Ltd. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  <!-- 返回首页按钮 -->
+  <a href="index.html" class="return-home" aria-label="Return to Home" data-tooltip="Return to Home">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h5m10-11v10a1 1 0 01-1 1h-5"/>
+    </svg>
+  </a>
+
+ 

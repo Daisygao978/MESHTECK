@@ -1,31 +1,25 @@
 :root {
-  /* 色板 */
-  --brand-900: #1d4ed8; /* 深蓝 */
-  --brand-800: #1e3a8a; /* 中蓝 */
-  --brand-700: #2563eb; /* 浅蓝 */
-  --brand-600: #3b82f6; /* 亮蓝 */
-  --gray-900: #0b0d12; /* 深灰 */
-  --gray-800: #151922; /* 中灰 */
-  --gray-700: #2a3240; /* 浅灰 */
-  --gray-600: #536072; /* 灰色 */
-  --gray-500: #7c8899; /* 浅灰 */
-  --gray-400: #b3bcc9; /* 亮灰 */
-  --bg: #f0f4f8; /* 调整背景颜色为浅灰蓝 */
-  --text: #111827; /* 文字黑 */
+  --brand-900: #1d4ed8;
+  --brand-800: #1e3a8a;
+  --brand-700: #2563eb;
+  --brand-600: #3b82f6;
+  --gray-900: #0b0d12;
+  --gray-800: #151922;
+  --gray-700: #2a3240;
+  --gray-600: #536072;
+  --gray-500: #7c8899;
+  --gray-400: #b3bcc9;
+  --bg: #f0f4f8;
+  --text: #111827;
 
-  /* 圆角与阴影 */
   --radius: 14px;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  /* 动画节奏 */
   --fast: 160ms ease;
   --slow: 320ms ease;
-
-  /* 版心宽度 */
   --container: 1180px;
 }
 
-/* 深色模式覆盖（可选） */
+/* 深色模式 */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0c111b;
@@ -39,7 +33,6 @@
   }
 }
 
-/* ============== 页面作用域（必须：<body class="about-page">） ============== */
 .about-page {
   background: var(--bg);
   color: var(--text);
@@ -60,11 +53,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.about-page .header-subtitle {
-  margin-top: 8px;
-  color: var(--gray-600);
-  font-size: 0.98rem;
-}
 
 /* 布局 */
 .about-page .container {
@@ -82,12 +70,11 @@
   position: sticky;
   top: 84px;
   height: fit-content;
-  background: var(--gray-100); /* 调整侧边导航框颜色 */
-  backdrop-filter: blur(4px);
+  background: #fff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 18px;
-  border: 1px solid var(--gray-300);
+  border: 1px solid var(--gray-400);
 }
 .about-page .sidebar h2 {
   font-size: 0.95rem;
@@ -95,21 +82,16 @@
   color: var(--brand-900);
   margin: 4px 0 12px;
 }
-
-/* Sidebar 链接 */
-.about-page .sidebar nav { display: grid; gap: 8px; }
 .about-page .sidebar a {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 8px;
+  display: block;
   padding: 10px 12px;
   font-weight: 600;
   color: var(--gray-700);
   border-radius: var(--radius);
-  border: 1px solid var(--gray-300);
+  border: 1px solid var(--gray-400);
   background: #fff;
   transition: transform var(--fast), box-shadow var(--fast), background var(--fast);
+  margin-bottom: 8px;
 }
 .about-page .sidebar a:hover {
   background: var(--brand-600);
@@ -151,40 +133,51 @@
 }
 .about-page .content img:hover { transform: scale(1.02); }
 
-/* 响应式 */
-@media (max-width: 1024px) {
-  .about-page .sidebar { position: relative; top: auto; width: 100%; flex: 1 1 100%; }
-}
-@media (max-width: 780px) {
-  .about-page .container { flex-direction: column; }
-  .about-page .content { padding: 20px; }
-  .about-page .sidebar { padding: 14px; }
-}
-@media (max-width: 520px) {
-  .about-page .sidebar a { padding: 12px 14px; }
-  .about-page .content h2 { font-size: 22px; }
-}
-
-/* 小组件 */
-.about-page .muted { color: var(--gray-500); }
-.about-page .badge {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: var(--brand-600);
-  border: 1px solid var(--gray-300);
+/* 固定右下角 Home 按钮 + 悬浮提示 */
+.about-page .return-home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--brand-800);
   color: #fff;
-  font-size: 12px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: background var(--fast), transform var(--fast);
+  z-index: 1000;
+  cursor: pointer;
+}
+.about-page .return-home svg {
+  width: 26px;
+  height: 26px;
+}
+.about-page .return-home:hover {
+  background: var(--brand-700);
+  transform: scale(1.1);
 }
 
-/* 轻动效 */
-.about-page .reveal { opacity: 0; transform: translateY(6px); animation: fadeUp var(--slow) forwards; }
-@keyframes fadeUp { to { opacity: 1; transform: none; } }
-
-/* color-mix 兼容兜底 */
-@supports not (color-mix(in oklab, red, blue)) {
-  .about-page .sidebar { background: var(--gray-050); }
-  .about-page .sidebar a:hover { background: #eef4ff; }
-  .about-page .badge { background: #eef4ff; border-color: #c7d2fe; }
+/* tooltip 样式 */
+.about-page .return-home::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 65px;
+  right: 50%;
+  transform: translateX(50%);
+  background: var(--gray-800);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--fast), transform var(--fast);
+}
+.about-page .return-home:hover::after {
+  opacity: 1;
+  transform: translateX(50%) translateY(-4px);
 }

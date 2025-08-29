@@ -6,13 +6,13 @@
   <title>Product Center</title>
   <link rel="stylesheet" href="products.css">
 </head>
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
-  <button class="lightbox-close" aria-label="Close preview">&times;</button>
-  <img src="" alt="Enlarged product image">
-</div>
-
 <body class="products-page">
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+    <button class="lightbox-close" aria-label="Close preview">&times;</button>
+    <img src="" alt="Enlarged product image">
+  </div>
 
   <!-- 侧边导航 -->
   <div class="sidebar">
@@ -115,7 +115,7 @@
         
         We recommend two models of semi-privacy fences, which are not only sturdy and durable but also maintenance-free. The installation process is simple, with no visible screws or fasteners, allowing you to complete the installation easily with minimal tools. Upon receiving your order, we will provide detailed installation guidance to ensure a smooth setup.
         
-        </p>  
+      </p>  
     </div> 
 
     <div class="product" id="12">
@@ -129,44 +129,53 @@
         
         We recommend three models of privacy fences, which are not only sturdy and durable but also maintenance-free. We ensure easy installation with no visible screws or fasteners, allowing you to install them independently with just basic tools. Upon receiving your order, we promise to guide you through the installation process.</p>  
     </div> 
+
+    <!-- 固定右下角返回 Home 按钮 + 悬浮提示 -->
+    <a href="index.html" class="return-home" aria-label="Return to Home" data-tooltip="Return to Home">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h5m10-11v10a1 1 0 01-1 1h-5"/>
+      </svg>
+    </a>
+
     <script>
       (() => {
-        const lightbox   = document.getElementById('lightbox');
-        const lightImg   = lightbox.querySelector('img');
-        const closeBtn   = lightbox.querySelector('.lightbox-close');
-      
+        const lightbox = document.getElementById('lightbox');
+        const lightImg = lightbox.querySelector('img');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+
         // 打开
-        const open = (src, alt='') => {
+        const open = (src, alt = '') => {
           lightImg.src = src;
           lightImg.alt = alt || 'Enlarged product image';
           lightbox.classList.add('active');
-          lightbox.setAttribute('aria-hidden','false');
+          lightbox.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden'; // 禁止背景滚动
         };
-      
+
         // 关闭
         const close = () => {
           lightbox.classList.remove('active');
-          lightbox.setAttribute('aria-hidden','true');
+          lightbox.setAttribute('aria-hidden', 'true');
           lightImg.src = '';
           document.body.style.overflow = ''; // 还原滚动
         };
-      
+
         // 事件代理：点任何 .product img 都能打开
         document.addEventListener('click', (e) => {
           const img = e.target.closest('.product img');
           if (!img) return;
           open(img.src, img.alt || '');
         });
-      
+
         // 右上角关闭
         closeBtn.addEventListener('click', close);
-      
+
         // 点击遮罩关闭（仅点击背景时）
         lightbox.addEventListener('click', (e) => {
           if (e.target === lightbox) close();
         });
-      
+
         // ESC 关闭
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && lightbox.classList.contains('active')) {
@@ -174,9 +183,8 @@
           }
         });
       })();
-      </script>      
+    </script>
   </div>
-
 
   <!-- JS 脚本 -->
   <script>
@@ -189,30 +197,31 @@
         lightbox.classList.add('active');
       });
     });
-   // 获取元素
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = lightbox.querySelector("img");
-const closeBtn = lightbox.querySelector(".lightbox-close");
 
-// 点击产品图时显示大图
-document.querySelectorAll(".products-page .product img").forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.classList.add("active");
-    lightboxImg.src = img.src;
-  });
-});
+    // 获取元素
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    const closeBtn = lightbox.querySelector(".lightbox-close");
 
-// 点击叉号关闭
-closeBtn.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-});
+    // 点击产品图时显示大图
+    document.querySelectorAll(".products-page .product img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.classList.add("active");
+        lightboxImg.src = img.src;
+      });
+    });
 
-// 点击遮罩层空白处也可以关闭（可选）
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) {
-    lightbox.classList.remove("active");
-  }
-});
+    // 点击叉号关闭
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    // 点击遮罩层空白处也可以关闭（可选）
+    lightbox.addEventListener("click", e => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("active");
+      }
+    });
   </script>
 
 </body>

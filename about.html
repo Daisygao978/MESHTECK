@@ -1,117 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - Mesh Teck</title>
-    <link rel="stylesheet" href="About.css">
-    <style>
-        /* 图片样式 */
-        .content img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 20px auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Mesh Teck</title>
+  <link rel="stylesheet" href="about.css">
+  <style>
+    /* 图片样式（补充） */
+    .content img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-        /* 默认所有 section 隐藏 */
-        .section {
-            display: none;
-        }
-
-        /* 当前显示的 section */
-        .section.active {
-            display: block;
-        }
-    </style>
+    /* 默认所有 section 隐藏 */
+    .section { display: none; }
+    .section.active { display: block; }
+  </style>
 </head>
 <body class="about-page">
-    <header>
-        <h1>About Mesh Teck</h1>
-        <div class="header-images">
-            <img src="WechatIMG4111.jpg" alt="Company logo">
-        </div>
-    </header>
+  <header>
+    <h1>About Mesh Teck</h1>
+    <div class="header-images">
+      <img src="WechatIMG4111.jpg" alt="Company logo">
+    </div>
+  </header>
 
-    <div class="container">
-        <div class="sidebar">
-            <h2>Navigation</h2>
-            <a href="#company-intro" onclick="showSection(event, 'company-intro')">Company Introduction</a>
-            <a href="#main-products" onclick="showSection(event, 'main-products')">Main Products</a>
-            <a href="#brand-mission" onclick="showSection(event, 'brand-mission')">Brand Mission</a>
-        </div>
-
-        <div class="content">
-            <div id="company-intro" class="section">
-                <h2>Company Introduction</h2>
-                <p>
-                    Mesh Teck (Jiaxing) Co., Ltd. is a manufacturing enterprise specializing in boundary products, 
-                    including mesh fences, prefabricated garden fences, guardrails, automated protective nets, and access control systems. 
-                    We integrate design, R&D, production, sales, and service. With the support of our sister company, 
-                    Zhejiang Anrud Security Products Co., Ltd., we have over 16 years of experience in the boundary field, and 
-                    our products are exported to countries such as Japan, South Korea, Indonesia, Mexico, the United States, and New Zealand.
-                </p>
-                <img src="MeshTeck/WechatIMG150.jpg" alt="Company">
-            </div>
-
-            <div id="main-products" class="section">
-                <h2>Main Products</h2>
-                <p>Our main products include:</p>
-                <ul>
-                    <li>Perimeter Protection System: Metal Mesh Series, Fence Series, Guardrail Series;</li>
-                    <li>Automated Protection System: Wire Panel Series, PC Panel Series, Steel Panel Series;</li>
-                    <li>Access Control System: Sliding Door Series and Swing Door Series;</li>
-                    <li>Residential Security System: Courtyard Prefabricated Series;</li>
-                </ul>
-                <p>Mesh Teck is committed to providing high-quality site safety protection products to the market and customers, offering professional and comprehensive site safety protection solutions.</p>
-                <img src="MeshTeck/WechatIMG147.jpg" alt="Product Showcase">
-            </div>
-
-            <div id="brand-mission" class="section">
-                <h2>Brand Mission</h2>
-                <p>
-                    Brand mission is the reason for the brand's existence and its value.
-                    With our extra efforts, the world gains more peace.
-                    Without a peaceful environment and reliable security,
-                    whether it is a business or a family,
-                    it is difficult to have true passion for striving and a sense of happiness.
-                    Mesh Tesk not only bears the responsibility for its own development but also carries a heavy social responsibility.
-                    Let the world have more peace and allow people to enjoy a better life.
-                </p>
-                <img src="WechatIMG35.jpg" alt="Peace and Security">
-            </div>
-        </div>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Navigation</h2>
+      <a href="#company-intro" onclick="showSection(event, 'company-intro')">Company Introduction</a>
+      <a href="#main-products" onclick="showSection(event, 'main-products')">Main Products</a>
+      <a href="#brand-mission" onclick="showSection(event, 'brand-mission')">Brand Mission</a>
     </div>
 
-    <script>
-        function showSection(e, sectionId) {
-            if (e) e.preventDefault();
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
+    <div class="content">
+      <div id="company-intro" class="section">
+        <h2>Company Introduction</h2>
+        <p>
+          Mesh Teck (Jiaxing) Co., Ltd. is a manufacturing enterprise specializing in boundary products, 
+          including mesh fences, prefabricated garden fences, guardrails, automated protective nets, and access control systems. 
+          We integrate design, R&D, production, sales, and service. With the support of our sister company, 
+          Zhejiang Anrud Security Products Co., Ltd., we have over 16 years of experience in the boundary field, and 
+          our products are exported to countries such as Japan, South Korea, Indonesia, Mexico, the United States, and New Zealand.
+        </p>
+        <img src="MeshTeck/WechatIMG150.jpg" alt="Company">
+      </div>
 
-            const target = document.getElementById(sectionId);
-            if (target) target.classList.add('active');
-        }
+      <div id="main-products" class="section">
+        <h2>Main Products</h2>
+        <p>Our main products include:</p>
+        <ul>
+          <li>Perimeter Protection System: Metal Mesh Series, Fence Series, Guardrail Series;</li>
+          <li>Automated Protection System: Wire Panel Series, PC Panel Series, Steel Panel Series;</li>
+          <li>Access Control System: Sliding Door Series and Swing Door Series;</li>
+          <li>Residential Security System: Courtyard Prefabricated Series;</li>
+        </ul>
+        <p>Mesh Teck is committed to providing high-quality site safety protection products to the market and customers, offering professional and comprehensive site safety protection solutions.</p>
+        <img src="MeshTeck/WechatIMG147.jpg" alt="Product Showcase">
+      </div>
 
-        // 页面加载时，根据 hash 显示对应的 section
-        document.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.substring(1);
-            if (hash) {
-                showSection(null, hash);
-            } else {
-                showSection(null, 'company-intro');
-            }
-        });
+      <div id="brand-mission" class="section">
+        <h2>Brand Mission</h2>
+        <p>
+          Brand mission is the reason for the brand's existence and its value.
+          With our extra efforts, the world gains more peace.
+          Without a peaceful environment and reliable security,
+          whether it is a business or a family,
+          it is difficult to have true passion for striving and a sense of happiness.
+          Mesh Tesk not only bears the responsibility for its own development but also carries a heavy social responsibility.
+          Let the world have more peace and allow people to enjoy a better life.
+        </p>
+        <img src="WechatIMG35.jpg" alt="Peace and Security">
+      </div>
+    </div>
+  </div>
 
-        // 监听 hash 变化（点击菜单或者外部跳转）
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.substring(1);
-            if (hash) {
-                showSection(null, hash);
-            }
-        });
-    </script>
+  <!-- 固定右下角返回 Home 按钮 + 悬浮提示 -->
+  <a href="index.html" class="return-home" aria-label="Return to Home" data-tooltip="Return to Home">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h5m10-11v10a1 1 0 01-1 1h-5"/>
+    </svg>
+  </a>
+
+  <script>
+    function showSection(e, sectionId) {
+      if (e) e.preventDefault();
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      const target = document.getElementById(sectionId);
+      if (target) target.classList.add('active');
+    }
+
+    // 页面加载时，根据 hash 显示对应的 section
+    document.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showSection(null, hash);
+      } else {
+        showSection(null, 'company-intro');
+      }
+    });
+
+    // 监听 hash 变化（点击菜单或者外部跳转）
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showSection(null, hash);
+      }
+    });
+  </script>
 </body>
 </html>
